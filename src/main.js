@@ -5,6 +5,13 @@ import  app from './App.vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
+
+//全局过滤器
+import moment from 'moment'
+Vue.filter('dateFormat',function (dataStr,pattern="YYYY-MM-DD HH:mm:ss") {
+    return moment(dataStr).format(pattern)
+});
+
 //按需导入mintui组件并注册
 import {Header} from 'mint-ui'
 Vue.component(Header.name,Header);
@@ -15,6 +22,9 @@ Vue.component(SwipeItem.name, SwipeItem);
 //导入，安装Vue-resource
 import VueResource from 'vue-resource'
 Vue.use(VueResource);
+
+//设置请求接口根路径
+Vue.http.options.root = 'http://www.liulongbin.top:3005';
 
 //导入MUI样式
 import './lib/mui/css/mui.min.css'
